@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our 8-Month Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.5;
+            }
+            80% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .animate-float {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            animation: float linear infinite;
+        }
+        
+        .heart-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hidden-view {
+            display: none !important;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-b from-[#fff5f5] to-[#fffafa] text-slate-800 min-h-screen relative overflow-x-hidden">
+
+    <!-- Background Hearts -->
+    <div id="floating-hearts-container"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 py-8 md:py-12 flex flex-col items-center">
+
+        <!-- Header Section -->
+        <header id="main-header" class="text-center mb-12 fade-in">
+            <div class="flex justify-center mb-4">
+                <div class="relative group cursor-pointer" onclick="location.reload()">
+                    <svg class="text-rose-500 fill-rose-500 w-16 h-16 heart-pulse" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    <span class="absolute inset-0 flex items-center justify-center text-white font-bold text-lg">8</span>
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black text-rose-600 mb-3 tracking-tight">Our 8-Month Journey</h1>
+            <div class="h-1 w-24 bg-rose-200 mx-auto rounded-full mb-4"></div>
+            <p class="text-slate-500 max-w-md mx-auto italic font-medium">
+                Eight beautiful months of loving you, dreaming with you, and holding every memory close to my heart.
+            </p>
+        </header>
+
+        <!-- Grid View -->
+        <div id="grid-view" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full fade-in">
+            <!-- Grid items will be injected by JS -->
+        </div>
+
+        <!-- Detail View (Hidden by default) -->
+        <div id="detail-view" class="w-full max-w-2xl hidden-view fade-in">
+            <button onclick="showGrid()" class="mb-6 flex items-center text-rose-500 font-bold hover:-translate-x-1 transition-transform bg-white/50 py-2 px-4 rounded-full shadow-sm">
+                <svg class="mr-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg> Back to Journey
+            </button>
+
+            <div class="bg-white rounded-[2.5rem] shadow-2xl border border-rose-50 overflow-hidden relative">
+                <div class="bg-rose-500 p-10 text-white text-center relative overflow-hidden">
+                    <h2 id="detail-month-title" class="text-4xl font-black mb-1">Month 1</h2>
+                    <div class="w-12 h-1 bg-white/30 mx-auto rounded-full mb-2"></div>
+                    <p class="opacity-90 text-xs uppercase tracking-[0.3em] font-black">Chapter of Us</p>
+                </div>
+
+                <div class="p-8 md:p-14 space-y-12">
+                    <!-- Reason -->
+                    <section>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-rose-50 rounded-lg text-rose-500">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                            </div>
+                            <h4 class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">The Reason</h4>
+                        </div>
+                        <p id="detail-reason" class="text-xl md:text-2xl text-slate-700 font-semibold italic leading-relaxed pl-2"></p>
+                    </section>
+
+                    <!-- Plan -->
+                    <section>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-amber-50 rounded-lg text-amber-500">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                            </div>
+                            <h4 class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">The Future</h4>
+                        </div>
+                        <p id="detail-plan" class="text-xl md:text-2xl text-slate-700 font-semibold italic leading-relaxed pl-2"></p>
+                    </section>
+
+                    <!-- Memory -->
+                    <section>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 bg-sky-50 rounded-lg text-sky-500">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+                            </div>
+                            <h4 class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">The Memory</h4>
+                        </div>
+                        <p id="detail-memory" class="text-xl md:text-2xl text-slate-700 font-semibold italic leading-relaxed pl-2"></p>
+                    </section>
+                </div>
+
+                <!-- Progress Bar Footer -->
+                <div class="bg-slate-50 p-8 flex justify-between items-center px-12 border-t border-slate-100">
+                    <div id="progress-dots" class="flex gap-2"></div>
+                    <div class="text-right">
+                        <span id="progress-text" class="text-[10px] font-black text-rose-300 uppercase tracking-widest block"></span>
+                        <span class="text-[9px] font-bold text-slate-400 uppercase">Anniversary Edition</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation buttons -->
+            <div class="mt-10 flex justify-between items-center">
+                <button id="prev-btn" class="flex items-center gap-2 px-6 py-4 rounded-2xl font-black text-sm transition-all bg-white text-slate-500 shadow-lg hover:shadow-xl active:scale-95">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg> Previous
+                </button>
+                <div class="hidden md:block h-px flex-grow mx-8 bg-rose-100"></div>
+                <button id="next-btn" class="flex items-center gap-2 px-6 py-4 rounded-2xl font-black text-sm transition-all bg-rose-500 text-white shadow-lg hover:bg-rose-600 active:scale-95">
+                    Next <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="main-footer" class="mt-16 text-center animate-bounce">
+            <p class="text-rose-400 font-black text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-2">
+                Every chapter is a gift
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const journeyData = [{
+            month: 1,
+            reason: "I love you because even from miles away, you make me feel at home. Your presence lives in my heart, not in distance.",
+            plan: "One day, we’ll wake up in the same place—no good morning texts, just good morning kisses.",
+            memory: "I remember our first long conversation—when time disappeared and something special quietly began."
+        }, {
+            month: 2,
+            reason: "I love the way you understand me without me explaining everything. Somehow, you always know.",
+            plan: "I want us to travel together, get lost in new cities, and laugh about how far we’ve come.",
+            memory: "I remember staying awake late just to talk to you, even when sleep begged me to stop."
+        }, {
+            month: 3,
+            reason: "I love how your voice can fix a bad day in seconds. No medicine works like you do.",
+            plan: "I want lazy evenings with you—no phones, just us and quiet happiness.",
+            memory: "I remember missing you even while talking to you—that’s when I knew this was real."
+        }, {
+            month: 4,
+            reason: "I love your patience with me—my moods, my silence, my overthinking. You stay.",
+            plan: "I want to build a life where distance is only a memory we smile about.",
+            memory: "I remember the first time you made me smile on a bad day without even trying."
+        }, {
+            month: 5,
+            reason: "I love the way you believe in me, even when I doubt myself. You see potential I sometimes forget.",
+            plan: "I want to celebrate every little win with you, because your happiness will always matter to me.",
+            memory: "I remember our small fights, because they showed me we choose to fix things, not run."
+        }, {
+            month: 6,
+            reason: "I love your laugh. I don’t even need to hear it—I can imagine it, and it still makes me smile.",
+            plan: "I want to be the person you run to when the world feels heavy.",
+            memory: "I remember the comfort in your words when I needed reassurance most."
+        }, {
+            month: 7,
+            reason: "I love how you choose me every day, despite the distance, despite the wait.",
+            plan: "I want us to grow—individually and together—never holding each other back, only lifting up.",
+            memory: "I remember moments when the distance hurt—but loving you hurt more to imagine losing."
+        }, {
+            month: 8,
+            reason: "I love you because loving you feels natural—like something my heart was always meant to do.",
+            plan: "I want a future where “we” always comes before “me.”",
+            memory: "I remember realizing that you’re not just part of my life—you’re part of my heart."
+        }];
+
+        let currentMonth = null;
+
+        function createFloatingHearts() {
+            const container = document.getElementById('floating-hearts-container');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'animate-float';
+                heart.innerHTML = `<svg width="20" height="20" class="text-rose-200 fill-rose-100" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`;
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.animationDuration = (10 + Math.random() * 15) + 's';
+                container.appendChild(heart);
+            }
+        }
+
+        function renderGrid() {
+            const grid = document.getElementById('grid-view');
+            grid.innerHTML = journeyData.map(data => `
+                <button onclick="showMonth(${data.month})" class="group relative bg-white/80 backdrop-blur-sm aspect-[4/5] rounded-[2rem] shadow-sm hover:shadow-2xl border border-rose-100 transition-all duration-500 overflow-hidden flex flex-col items-center justify-center p-6">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-rose-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    <span class="text-slate-100 font-black text-7xl absolute -bottom-4 -right-2 opacity-50 group-hover:opacity-100 transition-all duration-500 group-hover:text-rose-50 select-none">${data.month}</span>
+                    <div class="bg-rose-50 p-4 rounded-2xl group-hover:bg-rose-500 group-hover:rotate-12 transition-all duration-500 mb-4 z-10">
+                        <svg class="text-rose-400 group-hover:text-white transition-colors" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-700 z-10">Month ${data.month}</h3>
+                    <p class="text-[10px] text-rose-400 font-black uppercase tracking-[0.2em] mt-2 group-hover:translate-y-1 transition-transform z-10">Open Chapter</p>
+                </button>
+            `).join('');
+        }
+
+        function showMonth(monthNumber) {
+            currentMonth = journeyData.find(d => d.month === monthNumber);
+
+            document.getElementById('grid-view').classList.add('hidden-view');
+            document.getElementById('main-header').classList.add('hidden-view');
+            document.getElementById('main-footer').classList.add('hidden-view');
+            document.getElementById('detail-view').classList.remove('hidden-view');
+
+            document.getElementById('detail-month-title').innerText = `Month ${currentMonth.month}`;
+            document.getElementById('detail-reason').innerText = `"${currentMonth.reason}"`;
+            document.getElementById('detail-plan').innerText = `"${currentMonth.plan}"`;
+            document.getElementById('detail-memory').innerText = `"${currentMonth.memory}"`;
+
+            // Progress
+            document.getElementById('progress-text').innerText = `Month ${currentMonth.month} of 8`;
+            const dots = document.getElementById('progress-dots');
+            dots.innerHTML = '';
+            for (let i = 1; i <= 8; i++) {
+                const dot = document.createElement('div');
+                dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-500 ${i <= currentMonth.month ? 'bg-rose-400 scale-110 shadow-sm' : 'bg-slate-200'}`;
+                dots.appendChild(dot);
+            }
+
+            // Nav buttons
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (currentMonth.month === 1) prevBtn.classList.add('opacity-0', 'pointer-events-none');
+            else {
+                prevBtn.classList.remove('opacity-0', 'pointer-events-none');
+                prevBtn.onclick = () => showMonth(currentMonth.month - 1);
+            }
+
+            if (currentMonth.month === 8) nextBtn.classList.add('opacity-0', 'pointer-events-none');
+            else {
+                nextBtn.classList.remove('opacity-0', 'pointer-events-none');
+                nextBtn.onclick = () => showMonth(currentMonth.month + 1);
+            }
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function showGrid() {
+            document.getElementById('grid-view').classList.remove('hidden-view');
+            document.getElementById('main-header').classList.remove('hidden-view');
+            document.getElementById('main-footer').classList.remove('hidden-view');
+            document.getElementById('detail-view').classList.add('hidden-view');
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize
+        createFloatingHearts();
+        renderGrid();
+    </script>
+</body>
+
+</html>
